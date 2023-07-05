@@ -1,0 +1,9 @@
+{
+  "extends": "@gravity-ui/tsconfig",
+  "include": ["transforms"],
+  "exclude": ["transforms/__testfixtures__"],
+  "compilerOptions": {
+    "module": "esnext",
+    "jsx": "react"
+  }
+}

@@ -1,14 +1,19 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import module from 'module';
+import path from 'path';
+import url from 'url';
 
-const chalk = require('chalk');
-const execa = require('execa');
-const globby = require('globby');
-const meow = require('meow');
+import chalk from 'chalk';
+import {execaSync} from 'execa';
+import {globby} from 'globby';
+import meow from 'meow';
+
+const require = module.createRequire(import.meta.url);
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 const transformerDirectory = path.join(__dirname, '../', 'transforms');
 const jscodeshiftExecutable = require.resolve('.bin/jscodeshift');
-const TRANSFORMERS = ['example'];
+const TRANSFORMERS = ['5-move-components'];
 
 function expandFilePathsIfNeeded(filesBeforeExpansion) {
     const shouldExpandFiles = filesBeforeExpansion.some((file) => file.includes('*'));
@@ -22,7 +27,7 @@ function getTransformerPath(transformer) {
     return fs.existsSync(indexPath) ? indexPath : normalPath;
 }
 
-function runTransform({transformer, parser, flags, files}) {
+export function runTransform({transformer, parser, flags, files}) {
     const transformerPath = getTransformerPath(transformer);
 
     let args = [];
@@ -58,17 +63,13 @@ function runTransform({transformer, parser, flags, files}) {
 
     console.log(`Executing command: jscodeshift ${args.join(' ')}`);
 
-    const result = execa.sync(jscodeshiftExecutable, args, {
+    execaSync(jscodeshiftExecutable, args, {
         stdio: 'inherit',
         stripEof: false,
     });
-
-    if (result.error) {
-        throw result.error;
-    }
 }
 
-function run() {
+export function run() {
     const cli = meow(
         `
         Usage:
@@ -90,7 +91,7 @@ function run() {
                 dry: {
                     type: 'boolean',
                     default: false,
-                    alias: 'd',
+                    shortFlag: 'd',
                 },
                 parser: {
                     type: 'string',
@@ -99,7 +100,7 @@ function run() {
                 print: {
                     type: 'boolean',
                     default: false,
-                    alias: 'p',
+                    shortFlag: 'p',
                 },
             },
         },
@@ -133,8 +134,3 @@ function run() {
         files: filesExpanded,
     });
 }
-
-module.exports = {
-    run,
-    runTransform,
-};

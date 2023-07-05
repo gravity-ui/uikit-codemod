@@ -10,12 +10,12 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 ## Available transforms
 
-### `example`
+### `5-move-components`
 
-Description
+Move components to `@gravity-ui/components` package
 
 ```sh
-npx @gravity-ui/uikit-codemod example <path>
+npx @gravity-ui/uikit-codemod 5-move-components <path>
 ```
 
 ## jscodeshift arguments

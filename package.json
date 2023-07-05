@@ -7,6 +7,7 @@
     "type": "git",
     "url": "https://github.com/gravity-ui/uikit-codemod"
   },
+  "type": "module",
   "main": "index.js",
   "files": [
     "bin",

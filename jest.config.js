@@ -4,4 +4,5 @@ export default {
         '\\.ts$': ['ts-jest'],
     },
     automock: false,
+    testMatch: ['**/*.test.ts'],
 };

@@ -46,13 +46,7 @@ export default function (file: FileInfo, api: API, options: Options) {
         return;
     }
 
-    return root.toSource(
-        options.printOptions || {
-            quote: 'single',
-            trailingComma: true,
-            objectCurlySpacing: false,
-        },
-    );
+    return root.toSource({...options.printOptions, quote: 'single'});
 
     function moveImportMembers(path: ASTPath<ImportDeclaration>) {
         if (!path || path.node.specifiers?.length === 0) {

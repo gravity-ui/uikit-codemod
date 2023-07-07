@@ -1,18 +1,13 @@
-import {TestOptions, defineTest} from 'jscodeshift/src/testUtils';
+import {defineTest} from 'jscodeshift/src/testUtils';
 
-const printOptions = {
-    quote: 'single',
-    trailingComma: true,
-    objectCurlySpacing: false,
-    wrapColumn: 120,
-};
-const testOptions: TestOptions = {
-    parser: 'tsx',
-};
+import {printOptions} from './constants';
 
-defineTest(__dirname, '5-move-components', {printOptions}, '5-move-components/alias', testOptions);
-defineTest(__dirname, '5-move-components', {printOptions}, '5-move-components/all', testOptions);
-defineTest(__dirname, '5-move-components', {printOptions}, '5-move-components/mixed', testOptions);
-defineTest(__dirname, '5-move-components', {printOptions}, '5-move-components/reuse', testOptions);
-defineTest(__dirname, '5-move-components', {printOptions}, '5-move-components/type', testOptions);
+const NAME = '5-move-components';
+
+
+defineTest(__dirname, NAME, {printOptions}, NAME + '/alias', {parser: 'tsx'});
+defineTest(__dirname, NAME, {printOptions}, NAME + '/all', {parser: 'tsx'});
+defineTest(__dirname, NAME, {printOptions}, NAME + '/mixed', {parser: 'tsx'});
+defineTest(__dirname, NAME, {printOptions}, NAME + '/reuse', {parser: 'tsx'});
+defineTest(__dirname, NAME, {printOptions}, NAME + '/type', {parser: 'tsx'});
 

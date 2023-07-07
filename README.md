@@ -14,9 +14,13 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 Move components to `@gravity-ui/components` package
 
-```sh
-npx @gravity-ui/uikit-codemod 5-move-components <path>
-```
+### `5-progress-props`
+
+Remap Progress props
+
+### `5-popup-props`
+
+Remap Popup props
 
 ## jscodeshift arguments
 You can pass jscodeshift arguments directly with the `--jscodeshift="..."` flag. For example:

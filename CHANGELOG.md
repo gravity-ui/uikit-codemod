@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/gravity-ui/uikit-codemod/compare/v1.0.0...v1.0.1) (2023-07-11)
+
+
+### Bug Fixes
+
+* move helpers out of tests folder ([80c09f1](https://github.com/gravity-ui/uikit-codemod/commit/80c09f117b21828cf56e04bfce6fb41ca8edc7e0))
+
 ## 1.0.0 (2023-07-07)
 
 

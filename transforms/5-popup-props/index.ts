@@ -1,6 +1,6 @@
 import {API, FileInfo, Options} from 'jscodeshift';
 
-import {remapJSXProps} from '../__tests__/helpers';
+import {remapJSXProps} from '../helpers';
 
 const popupConfig = {
     className: 'contentClassName',

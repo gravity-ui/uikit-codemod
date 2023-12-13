@@ -10,11 +10,11 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 ## Available transforms
 
-### @gravity-ui@6
+### @gravity-ui/uikit@6
 
 #### `6-positive-to-success`
 
-### @gravity-ui@5
+### @gravity-ui/uikit@5
 
 #### `5-move-components`
 

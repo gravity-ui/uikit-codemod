@@ -10,15 +10,21 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 ## Available transforms
 
-### `5-move-components`
+### @gravity-ui@6
+
+#### `6-positive-to-success`
+
+### @gravity-ui@5
+
+#### `5-move-components`
 
 Move components to `@gravity-ui/components` package
 
-### `5-progress-props`
+#### `5-progress-props`
 
 Remap Progress props
 
-### `5-popup-props`
+#### `5-popup-props`
 
 Remap Popup props
 

@@ -13,7 +13,11 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 const transformerDirectory = path.join(__dirname, '../', 'transforms');
 const jscodeshiftExecutable = require.resolve('.bin/jscodeshift');
-const TRANSFORMERS = ['5-move-components', '5-progress-props', '5-popup-props'];
+
+const TRANSFORMERS_V5 = ['5-move-components', '5-progress-props', '5-popup-props'];
+const TRANSFORMERS_V6 = ['6-positive-to-success'];
+
+const TRANSFORMERS = [...TRANSFORMERS_V5, ...TRANSFORMERS_V6];
 
 function expandFilePathsIfNeeded(filesBeforeExpansion) {
     const shouldExpandFiles = filesBeforeExpansion.some((file) => file.includes('*'));

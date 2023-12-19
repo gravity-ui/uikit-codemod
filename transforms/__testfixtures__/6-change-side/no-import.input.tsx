@@ -1,3 +1,3 @@
 function ButtonIcon() {}
 
-const result = <ButtonIcon size="left" />;
+const result = <ButtonIcon side="left" />;

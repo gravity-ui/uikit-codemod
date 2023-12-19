@@ -3,8 +3,8 @@ import {API, FileInfo, Options} from 'jscodeshift';
 import {remapJSXProps} from '../helpers';
 
 const config = {
-    size: {
-        to: 'size',
+    side: {
+        to: 'side',
         values: {
             left: 'start',
             right: 'end',

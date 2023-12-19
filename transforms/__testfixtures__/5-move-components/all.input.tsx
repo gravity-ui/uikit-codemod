@@ -1,1 +1,1 @@
-import {HelpPopover, Stories} from '@gravity-ui/uikit';
+import {HelpPopover, Stories} from "@gravity-ui/uikit";

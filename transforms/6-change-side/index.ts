@@ -3,8 +3,8 @@ import {API, FileInfo, Options} from 'jscodeshift';
 import {remapJSXProps} from '../helpers';
 
 const config = {
-    size: {
-        to: 'size',
+    side: {
+        to: 'side',
         values: {
             left: 'start',
             right: 'end',
@@ -17,9 +17,11 @@ export default function (file: FileInfo, api: API, options: Options) {
     const root = j(file.source);
 
     if (
-        !remapJSXProps('ButtonIcon', config, root, j) &&
-        !remapJSXProps('Button.Icon', config, root, j) &&
-        !remapJSXProps('Disclosure', config, root, j)
+        !Math.max(
+            Number(remapJSXProps('Button.Icon', config, root, j)),
+            Number(remapJSXProps('ButtonIcon', config, root, j)),
+            Number(remapJSXProps('Disclosure', config, root, j)),
+        )
     ) {
         return;
     }

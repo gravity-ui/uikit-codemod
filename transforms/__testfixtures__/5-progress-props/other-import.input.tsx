@@ -1,3 +1,3 @@
-import {Progress} from 'random-package';
+import {Progress} from "random-package";
 
 const result = <Progress view="thin" />;

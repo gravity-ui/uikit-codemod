@@ -10,6 +10,14 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 ## Available transforms
 
+### `6-change-side`
+
+Changes the `side` value from `left` to `start` for Button.Icon, Disclosure, ButtonIcon
+
+### `6-positive-to-success`
+
+Changes the `positive` value to `success` of `theme` prop for Alert and Card components
+
 ### `5-move-components`
 
 Move components to `@gravity-ui/components` package

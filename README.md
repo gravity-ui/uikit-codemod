@@ -10,6 +10,10 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 ## Available transforms
 
+### `6-positive-to-success`
+
+Changes the `positive` value to `success` of `theme` prop for Alert and Card components
+
 ### `5-move-components`
 
 Move components to `@gravity-ui/components` package

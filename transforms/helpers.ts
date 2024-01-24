@@ -38,7 +38,7 @@ export function remapJSXProps(
         })
         .nodes();
 
-    let fired = false;
+    let isUpdated = false;
 
     nodes.forEach((elem) => {
         elem.openingElement.attributes?.forEach((attr) => {
@@ -53,7 +53,7 @@ export function remapJSXProps(
             propMatch = typeof propMatch === 'string' ? {to: propMatch} : propMatch;
             if (attr.name.name !== propMatch.to) {
                 attr.name = j.jsxIdentifier(propMatch.to);
-                fired = true;
+                isUpdated = true;
             }
 
             // handle prop value
@@ -67,10 +67,10 @@ export function remapJSXProps(
 
             if (originalProp.value !== valueMatch) {
                 originalProp.value = valueMatch;
-                fired = true;
+                isUpdated = true;
             }
         });
     });
 
-    return fired;
+    return isUpdated;
 }

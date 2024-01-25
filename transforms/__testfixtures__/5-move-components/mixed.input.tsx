@@ -1,1 +1,1 @@
-import {Button, HelpPopover} from '@gravity-ui/uikit';
+import {Button, HelpPopover} from "@gravity-ui/uikit";

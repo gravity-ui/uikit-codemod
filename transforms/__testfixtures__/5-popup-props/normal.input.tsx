@@ -1,4 +1,4 @@
-import {Popup, Popover, SharePopover, HelpPopover} from '@gravity-ui/uikit';
+import {Popup, Popover, SharePopover, HelpPopover} from "@gravity-ui/uikit";
 
 const result1 = <Popup className="test1" />;
 const result2 = <Popover tooltipClassName="test2" />;

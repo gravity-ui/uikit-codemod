@@ -4,6 +4,7 @@
   "exclude": ["transforms/__testfixtures__"],
   "compilerOptions": {
     "module": "esnext",
-    "jsx": "react"
+    "jsx": "react",
+    "noUncheckedIndexedAccess": true,
   }
 }

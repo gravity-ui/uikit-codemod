@@ -1,1 +1,1 @@
-import type {HelpPopoverProps} from '@gravity-ui/components';
+import type {HelpPopoverProps} from "@gravity-ui/components";

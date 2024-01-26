@@ -1,3 +1,3 @@
-import {Progress} from '@gravity-ui/uikit';
+import {Progress} from "@gravity-ui/uikit";
 
 const result = <Progress size="s" />;

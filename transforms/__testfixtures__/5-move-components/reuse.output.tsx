@@ -1,1 +1,1 @@
-import {AdaptiveTabs, HelpPopover} from '@gravity-ui/components';
+import {AdaptiveTabs, HelpPopover} from "@gravity-ui/components";

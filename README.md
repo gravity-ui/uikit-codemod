@@ -14,6 +14,10 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 Changes the `side` value from `left` to `start` for Button.Icon, Disclosure, ButtonIcon
 
+### `6-toaster-type-to-theme`
+
+Transforms `type` to `theme` in `add` method, and replaces `error` value to `danger` value
+
 ### `6-positive-to-success`
 
 Changes the `positive` value to `success` of `theme` prop for Alert and Card components

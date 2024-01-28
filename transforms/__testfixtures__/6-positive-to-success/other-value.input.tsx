@@ -1,5 +1,5 @@
-import React from 'react';
-import {Alert, Card} from '@gravity-ui/uikit';
+import React from "react";
+import {Alert, Card} from "@gravity-ui/uikit";
 
 const result = <>
     <Alert theme="normal" />

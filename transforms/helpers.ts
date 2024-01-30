@@ -1,4 +1,4 @@
-import {Collection, JSCodeshift, StringLiteral} from 'jscodeshift';
+import {Collection, JSCodeshift, StringLiteral, JSXAttribute} from 'jscodeshift';
 
 export interface RemapJSXPropsConfig {
     [name: string]:
@@ -9,34 +9,53 @@ export interface RemapJSXPropsConfig {
         | string;
 }
 
-export function remapJSXProps(
-    name: string,
-    config: RemapJSXPropsConfig,
-    root: Collection,
-    j: JSCodeshift,
-) {
-    const foundImport = root
+export interface ReduceJSXPropsConfig {
+    [name: string]: {
+        [value: string]: {
+            [prop: string]: string | undefined;
+        };
+    };
+}
+
+function findImport(name: string, root: Collection, j: JSCodeshift) {
+    return root
         .find(j.ImportDeclaration, {
             source: {value: '@gravity-ui/uikit'},
             importKind: 'value',
         })
         .find(j.ImportSpecifier, {type: 'ImportSpecifier', imported: {name}})
         .nodes()[0];
+}
 
-    if (!foundImport) {
-        return false;
-    }
-
-    const nodes = root
+function findImportedNodes(name: string, root: Collection, j: JSCodeshift) {
+    return root
         .find(j.JSXElement, {
             openingElement: {
                 name: {
                     type: 'JSXIdentifier',
-                    name: foundImport.local?.name || foundImport.imported.name,
+                    name,
                 },
             },
         })
         .nodes();
+}
+
+export function remapJSXProps(
+    name: string,
+    config: RemapJSXPropsConfig,
+    root: Collection,
+    j: JSCodeshift,
+) {
+    const foundedImport = findImport(name, root, j);
+    if (!foundedImport) {
+        return false;
+    }
+
+    const nodes = findImportedNodes(
+        foundedImport.local?.name || foundedImport.imported.name,
+        root,
+        j,
+    );
 
     let isUpdated = false;
 
@@ -70,6 +89,55 @@ export function remapJSXProps(
                 isUpdated = true;
             }
         });
+    });
+
+    return isUpdated;
+}
+
+export function reduceJSXProps(
+    name: string,
+    config: ReduceJSXPropsConfig,
+    root: Collection,
+    j: JSCodeshift,
+) {
+    const foundedImport = findImport(name, root, j);
+    if (!foundedImport) {
+        return false;
+    }
+
+    const nodes = findImportedNodes(
+        foundedImport.local?.name || foundedImport.imported.name,
+        root,
+        j,
+    );
+
+    let isUpdated = false;
+
+    nodes.forEach((elem) => {
+        elem.openingElement.attributes = elem.openingElement.attributes?.reduce<JSXAttribute[]>(
+            (list, attr) => {
+                if (attr.type !== 'JSXAttribute' || attr.name.type !== 'JSXIdentifier') {
+                    return list;
+                }
+
+                const propConfig = config[attr.name.name];
+                if (!propConfig) return list;
+
+                if (attr.value?.type === 'StringLiteral' && propConfig[attr.value.value]) {
+                    Object.entries(propConfig[attr.value.value] ?? {}).forEach(([name, value]) => {
+                        list.push({
+                            type: 'JSXAttribute',
+                            name: {type: 'JSXIdentifier', name},
+                            value: value ? {type: 'StringLiteral', value} : undefined,
+                        });
+                        isUpdated = true;
+                    });
+                }
+
+                return list;
+            },
+            [],
+        );
     });
 
     return isUpdated;

@@ -10,6 +10,10 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 ## Available transforms
 
+### `6-normal-visitable`
+
+Transform `normal-visitbale` to `normal` of `view` prop and add prop `visitable` without value for Link
+
 ### `6-change-side`
 
 Changes the `side` value from `left` to `start` for Button.Icon, Disclosure, ButtonIcon

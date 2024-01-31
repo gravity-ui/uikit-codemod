@@ -20,6 +20,7 @@ const TRANSFORMERS = [
     '5-popup-props',
     '6-positive-to-success',
     '6-normal-visitable',
+    '6-change-side',
 ];
 
 function expandFilePathsIfNeeded(filesBeforeExpansion) {

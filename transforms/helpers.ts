@@ -1,4 +1,4 @@
-import {Collection, JSCodeshift, StringLiteral, JSXAttribute} from 'jscodeshift';
+import {Collection, JSCodeshift, JSXAttribute, StringLiteral} from 'jscodeshift';
 
 export interface RemapJSXPropsConfig {
     [name: string]:
@@ -51,7 +51,7 @@ function findImportedSubNodes(name: string, root: Collection, j: JSCodeshift) {
                         name: name,
                     },
                 },
-            }
+            },
         })
         .nodes();
 }
@@ -62,20 +62,16 @@ export function remapJSXProps(
     root: Collection,
     j: JSCodeshift,
 ) {
-    const [mainName, childrenName] = componentName.split('.');
+    const [mainName = '', childrenName] = componentName.split('.');
 
     const foundedImport = findImport(mainName, root, j);
     if (!foundedImport) {
         return false;
     }
 
-    const nodes = childrenName ?
-        findImportedSubNodes (mainName, root, j)
-        : findImportedNodes(
-        mainName,
-        root,
-        j,
-    );
+    const nodes = childrenName
+        ? findImportedSubNodes(childrenName, root, j)
+        : findImportedNodes(foundedImport.local?.name || foundedImport.imported.name, root, j);
 
     let isUpdated = false;
 

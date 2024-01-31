@@ -19,7 +19,6 @@ export default function (file: FileInfo, api: API, options: Options) {
     if (
         !Math.max(
             Number(remapJSXProps('Button.Icon', config, root, j)),
-            Number(remapJSXProps('ButtonIcon', config, root, j)),
             Number(remapJSXProps('Disclosure', config, root, j)),
         )
     ) {

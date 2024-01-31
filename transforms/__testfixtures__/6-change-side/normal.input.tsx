@@ -1,14 +1,13 @@
 import React from 'react';
 import {ArrowRotateRight} from '@gravity-ui/icons';
-import {Button, ButtonIcon, Disclosure} from '@gravity-ui/uikit';
+import {Button, Disclosure} from '@gravity-ui/uikit';
 
 const result = <>
     <Button.Icon side="left" someProp="123">
-        <ArrowRotateRight />
+        <ArrowRotateRight/>
     </Button.Icon>
-    <ButtonIcon side="left" />
-    <Disclosure side="left" />
+    <Disclosure side="left"/>
     <Button.Something side="left" someProp="123">
-        <ArrowRotateRight />
+        <ArrowRotateRight/>
     </Button.Something>
 </>

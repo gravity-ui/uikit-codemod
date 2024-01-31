@@ -10,6 +10,10 @@ Scripts that help in migration for newer features in `@gravity-ui/uikit`
 
 ## Available transforms
 
+### `6-normal-visitable`
+
+Transform `normal-visitbale` to `normal` of `view` prop and add prop `visitable` without value for Link
+
 ### `6-toaster-type-to-theme`
 
 Transforms `type` to `theme` in `add` method, and replaces `error` value to `danger` value

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/gravity-ui/uikit-codemod/compare/v1.1.0...v1.1.1) (2024-02-05)
+
+
+### Bug Fixes
+
+* add missing transform ([14ce7e5](https://github.com/gravity-ui/uikit-codemod/commit/14ce7e5b42769c38e8e095c7cfb500a08c3d836c))
+
 ## [1.1.0](https://github.com/gravity-ui/uikit-codemod/compare/v1.0.1...v1.1.0) (2024-01-31)
 
 

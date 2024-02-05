@@ -21,6 +21,7 @@ const TRANSFORMERS = [
     '6-positive-to-success',
     '6-normal-visitable',
     '6-change-side',
+    '6-toaster-type-to-theme',
 ];
 
 function expandFilePathsIfNeeded(filesBeforeExpansion) {
